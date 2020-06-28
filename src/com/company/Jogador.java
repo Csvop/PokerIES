@@ -19,6 +19,10 @@ public class Jogador {
 
     public void setFichas(int fichas) { this.fichas = fichas; }
 
+    public ArrayList<Carta> getMao() {
+        return mao;
+    }
+
     @Override
     public String toString() {
         return mao + "";

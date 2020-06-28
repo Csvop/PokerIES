@@ -6,6 +6,610 @@ import java.util.Random;
 import java.util.Collections;
 
 public class Main {
+    public static boolean isHighCard(ArrayList<Carta> umaMao) {
+        int cont = 0;
+        Carta aux = new Carta();
+        for (Carta carta : umaMao) {
+            for (int i = 0; i < umaMao.size(); i++) {
+                if (carta.getValor() > umaMao.get(cont).getValor()) {
+                    aux = carta;
+                    cont++;
+                }
+            }
+        }
+
+        System.out.println(aux + "<-- carta");
+        return false;
+    }
+
+    public static boolean isOnePair(ArrayList<Carta> umaMao) {
+        int i = 0;
+        int cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(0).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 2) {
+            return true;
+        }
+
+        i = 0;
+        cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(1).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 2) {
+            return true;
+        }
+
+        i = 0;
+        cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(2).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 2) {
+            return true;
+        }
+
+        i = 0;
+        cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(3).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 2) {
+            return true;
+        }
+
+        i = 0;
+        cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(4).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 2) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean isTwoPair(ArrayList<Carta> umaMao) {
+        int posCarta = 0;
+        int cont = 0;
+        for (Carta carta : umaMao) {
+            for (int i = 0; i < umaMao.size(); i++) {
+                if(carta.getValor() == umaMao.get(i).getValor()) {
+                    cont++;
+                }
+            }
+        }
+        if(cont == 9) { return true; } else { return false;}
+    }
+
+    public static boolean is3ofaKind(ArrayList<Carta> umaMao) {
+        int i = 0;
+        int cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(0).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 3) {
+            return true;
+        }
+
+        i = 0;
+        cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(1).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 3) {
+            return true;
+        }
+
+        i = 0;
+        cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(2).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 3) {
+            return true;
+        }
+
+        i = 0;
+        cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(3).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 3) {
+            return true;
+        }
+
+        i = 0;
+        cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(4).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 3) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean isStraight(ArrayList<Carta> umaMao) {
+        String possibilidade1 = "A2345";
+        String possibilidade2 = "23456";
+        String possibilidade3 = "34567";
+        String possibilidade4 = "45678";
+        String possibilidade5 = "56789";
+        String possibilidade6 = "6789T";
+        String possibilidade7 = "789TJ";
+        String possibilidade8 = "89TJQ";
+        String possibilidade9 = "9TJQK";
+        String possibilidade10 ="TJQKA";
+
+        int ii = 0;
+        for(Carta carta: umaMao) {
+            if(possibilidade1.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                return true;
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade2.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                return true;
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade3.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                return true;
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade4.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                return true;
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade5.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                return true;
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade6.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                return true;
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade7.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                return true;
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade8.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                return true;
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade9.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                return true;
+            }
+        }
+
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if (possibilidade10.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if (ii == 5) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean isFlush(ArrayList<Carta> umaMao) {
+            if(umaMao.get(0).getNaipe() == umaMao.get(1).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(2).getNaipe()
+                    && umaMao.get(0).getNaipe() == umaMao.get(3).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(4).getNaipe() ) {
+                return true;
+            }
+
+        return false;
+    }
+
+    public static boolean isFullHouse(ArrayList<Carta> umaMao) {
+        if(is3ofaKind(umaMao) && isOnePair(umaMao)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean is4ofaKind(ArrayList<Carta> umaMao) {
+        int i = 0;
+        int cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(0).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 4) {
+            return true;
+        }
+
+        i = 0;
+        cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(1).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 4) {
+            return true;
+        }
+
+        i = 0;
+        cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(2).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 4) {
+            return true;
+        }
+
+        i = 0;
+        cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(3).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 4) {
+            return true;
+        }
+
+        i = 0;
+        cicla = 0;
+        for (Carta carta : umaMao) {
+            if(umaMao.get(4).getValor() == umaMao.get(cicla).getValor()) {
+                i++;
+            }
+            cicla++;
+        }
+        if(i == 4) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean isStraightFlush(ArrayList<Carta> umaMao) {
+        String possibilidade1 = "A2345";
+        String possibilidade2 = "23456";
+        String possibilidade3 = "34567";
+        String possibilidade4 = "45678";
+        String possibilidade5 = "56789";
+        String possibilidade6 = "6789T";
+        String possibilidade7 = "789TJ";
+        String possibilidade8 = "89TJQ";
+        String possibilidade9 = "9TJQK";
+
+        int ii = 0;
+        for(Carta carta: umaMao) {
+            if(possibilidade1.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                if(umaMao.get(0).getNaipe() == umaMao.get(1).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(2).getNaipe()
+                        && umaMao.get(0).getNaipe() == umaMao.get(3).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(4).getNaipe() ){
+                    return true;
+                }
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade2.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                if(umaMao.get(0).getNaipe() == umaMao.get(1).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(2).getNaipe()
+                        && umaMao.get(0).getNaipe() == umaMao.get(3).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(4).getNaipe() ){
+                    return true;
+                }
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade3.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                if(umaMao.get(0).getNaipe() == umaMao.get(1).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(2).getNaipe()
+                        && umaMao.get(0).getNaipe() == umaMao.get(3).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(4).getNaipe() ){
+                    return true;
+                }
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade4.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                if(umaMao.get(0).getNaipe() == umaMao.get(1).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(2).getNaipe()
+                        && umaMao.get(0).getNaipe() == umaMao.get(3).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(4).getNaipe() ){
+                    return true;
+                }
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade5.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                if(umaMao.get(0).getNaipe() == umaMao.get(1).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(2).getNaipe()
+                        && umaMao.get(0).getNaipe() == umaMao.get(3).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(4).getNaipe() ){
+                    return true;
+                }
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade6.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                if(umaMao.get(0).getNaipe() == umaMao.get(1).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(2).getNaipe()
+                        && umaMao.get(0).getNaipe() == umaMao.get(3).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(4).getNaipe() ){
+                    return true;
+                }
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade7.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                if(umaMao.get(0).getNaipe() == umaMao.get(1).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(2).getNaipe()
+                        && umaMao.get(0).getNaipe() == umaMao.get(3).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(4).getNaipe() ){
+                    return true;
+                }
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade8.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                if(umaMao.get(0).getNaipe() == umaMao.get(1).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(2).getNaipe()
+                        && umaMao.get(0).getNaipe() == umaMao.get(3).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(4).getNaipe() ){
+                    return true;
+                }
+            }
+        }
+        ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade9.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                if(umaMao.get(0).getNaipe() == umaMao.get(1).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(2).getNaipe()
+                        && umaMao.get(0).getNaipe() == umaMao.get(3).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(4).getNaipe() ){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean isRoyalFlush(ArrayList<Carta> umaMao) {
+        String possibilidade1 = "TJQKA";
+
+        int ii = 0;
+
+        for(Carta carta: umaMao) {
+            if(possibilidade1.contains(carta.valorFinal(carta.getValor()))) {
+                ii++;
+            }
+            if(ii == 5) {
+                if(umaMao.get(0).getNaipe() == umaMao.get(1).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(2).getNaipe()
+                        && umaMao.get(0).getNaipe() == umaMao.get(3).getNaipe() && umaMao.get(0).getNaipe() == umaMao.get(4).getNaipe() ){
+                    return true;
+                }
+            }
+        }
+
+
+        return false;
+    }
+
+    public static Jogador isVencedor(Jogador jogador1, Jogador jogador2) {
+        //teste para valor da mao do jogador 1
+        String nomeDaJogada = "";
+        int pontos1 = 0;
+        ArrayList<Carta> mao1 = jogador1.getMao();
+        if(isOnePair(mao1)) {
+            pontos1 = 1;
+            nomeDaJogada = "Um Par";
+        }
+        if(isTwoPair(mao1)) {
+            pontos1 = 2;
+            nomeDaJogada = "Dois Pares";
+        }
+        if(is3ofaKind(mao1)) {
+            pontos1 = 3;
+            nomeDaJogada = "Tres Cartas Iguais";
+        }
+        if(isStraight(mao1)) {
+            pontos1 = 4;
+            nomeDaJogada = "Straight";
+        }
+        if(isFlush(mao1)) {
+            pontos1 = 5;
+            nomeDaJogada = "Flush";
+        }
+        if(isFullHouse(mao1)) {
+            pontos1 = 6;
+            nomeDaJogada = "Full House";
+        }
+        if(is4ofaKind(mao1)) {
+            pontos1 = 7;
+            nomeDaJogada = "Quatro Cartas Iguais";
+        }
+        if(isStraightFlush(mao1)) {
+            pontos1 = 8;
+            nomeDaJogada = "Straight Flush";
+        }
+        if(isRoyalFlush(mao1)) {
+            pontos1 = 9;
+            nomeDaJogada = "Royal Flush";
+        }
+        if(pontos1 == 0){
+            nomeDaJogada = "Maior Carta";
+        }
+
+        //teste para valor da mao do jogador 2
+        String nomeDaJogada2 = "";
+        int pontos2= 0;
+        ArrayList<Carta> mao2 = jogador2.getMao();
+        if(isOnePair(mao2)) {
+            pontos2 = 1;
+            nomeDaJogada2 = "Um Par";
+        }
+        if(isTwoPair(mao2)) {
+            pontos2 = 2;
+            nomeDaJogada2 = "Dois Pares";
+        }
+        if(is3ofaKind(mao2)) {
+            pontos2 = 3;
+            nomeDaJogada2 = "Tres Cartas Iguais";
+        }
+        if(isStraight(mao2)) {
+            pontos2 = 4;
+            nomeDaJogada2 = "Straight";
+        }
+        if(isFlush(mao2)) {
+            pontos2 = 5;
+            nomeDaJogada2 = "Flush";
+        }
+        if(isFullHouse(mao2)) {
+            pontos2 = 6;
+            nomeDaJogada2 = "Full House";
+        }
+        if(is4ofaKind(mao2)) {
+            pontos2 = 7;
+            nomeDaJogada2 = "Quatro Cartas Iguais";
+        }
+        if(isStraightFlush(mao2)) {
+            pontos2 = 8;
+            nomeDaJogada2 = "Straight Flush";
+        }
+        if(isRoyalFlush(mao2)) {
+            pontos2 = 9;
+            nomeDaJogada2 = "Royal Flush";
+        }
+        if(pontos2 == 0){
+            nomeDaJogada2 = "Maior Carta";
+        }
+
+        if (pontos1 > pontos2) {
+            System.out.println("Jogador 1 ganhou com "+nomeDaJogada);
+            return jogador1;
+        } else {
+            System.out.println("Jogador 2 ganhou com "+nomeDaJogada2);
+            return jogador2;
+        }
+    }
+
     public static void main (String args[]) {
         Scanner in = new Scanner(System.in);
 
@@ -129,18 +733,6 @@ public class Main {
         ArrayList<Carta> mao2 = new ArrayList<>();
         Jogador j1 = new Jogador(mao1,100);
         Jogador j2 = new Jogador(mao2,100);
-
-        //Mostra as cartas
-//        int cont = 0;
-//
-//        Collections.shuffle(baralho);
-//        Baralho deck = new Baralho(baralho);
-//
-//        for (Carta carta : baralho) {
-//            System.out.println(carta);
-//            cont++;
-//        }
-//        System.out.println(cont);
 
         //Jogo
         System.out.println("Bem vindo ao IES Poker!");
