@@ -6,22 +6,6 @@ import java.util.Random;
 import java.util.Collections;
 
 public class Main {
-    public static boolean isHighCard(ArrayList<Carta> umaMao) {
-        int cont = 0;
-        Carta aux = new Carta();
-        for (Carta carta : umaMao) {
-            for (int i = 0; i < umaMao.size(); i++) {
-                if (carta.getValor() > umaMao.get(cont).getValor()) {
-                    aux = carta;
-                    cont++;
-                }
-            }
-        }
-
-        System.out.println(aux + "<-- carta");
-        return false;
-    }
-
     public static boolean isOnePair(ArrayList<Carta> umaMao) {
         int i = 0;
         int cicla = 0;
@@ -512,6 +496,16 @@ public class Main {
         return false;
     }
 
+    public static int isHighCard(ArrayList<Carta> umaMao) {
+        Carta cartaAux = umaMao.get(0);
+        for (int i = 0; i < umaMao.size(); i++) {
+            if(umaMao.get(i).getValor() > cartaAux.getValor()) {
+                cartaAux = umaMao.get(i);
+            }
+        }
+        return cartaAux.getValor();
+    }
+
     public static Jogador isVencedor(Jogador jogador1, Jogador jogador2) {
         //teste para valor da mao do jogador 1
         String nomeDaJogada = "";
@@ -602,11 +596,22 @@ public class Main {
         }
 
         if (pontos1 > pontos2) {
-            System.out.println("Jogador 1 ganhou com "+nomeDaJogada);
+            System.out.println("\nJogador 1 ganhou com "+nomeDaJogada+"\n");
             return jogador1;
-        } else {
-            System.out.println("Jogador 2 ganhou com "+nomeDaJogada2);
+        } else if(pontos1 < pontos2){
+            System.out.println("\nJogador 2 ganhou com "+nomeDaJogada2+"\n");
             return jogador2;
+        } else {
+            if (isHighCard(mao1) > isHighCard(mao2)) {
+                System.out.println("\nJogador 1 ganhou com "+nomeDaJogada+"\n");
+                return jogador1;
+            } else if(isHighCard(mao1) < isHighCard(mao2)) {
+                System.out.println("\nJogador 2 ganhou com "+nomeDaJogada2+"\n");
+                return jogador2;
+            } else {
+                System.out.println("Incrvel!!! temos um empate!");
+                return null;
+            }
         }
     }
 
@@ -837,7 +842,63 @@ public class Main {
                     //Round2
                     boolean r2 = true;
                     while(r2 == true) {
+                        //Jogador 1
+                        System.out.println("Jogador 1, sua mão é: ");
+                        System.out.println(j1 + "\n");
 
+                        for (int i = 0; i < 5; i++) {
+
+                            System.out.println("Quais cartas você deseja trocar?");
+                            int fs = 0;
+                            for (Carta carta : j1.getMao()) {
+                                System.out.println(fs + "- " + carta);
+                                fs++;
+                            }
+                            System.out.println("5- Nenhuma");
+                            System.out.println("Digite o indice da carta que deseja tocar:");
+                            int x = in.nextInt();
+                            if(x < 5) {
+                                j1.getMao().remove(x);
+                            } else {
+                                break;
+                            }
+                        }
+                        int j = 0;
+                        while(j1.getMao().size() < 5) {
+                            j1.addNaMao(baralho.get(j));
+                            baralho.remove(j);
+                        }
+
+                        //Jogador 2
+                        System.out.println("Jogador 1 sua nova mão é: \n" + j1 + "\n");
+
+                        System.out.println("Jogador 2, sua mão é: ");
+                        System.out.println(j2 + "\n");
+
+                        for (int i = 0; i < 5; i++) {
+
+                            System.out.println("Quais cartas você deseja trocar?");
+                            int fs = 0;
+                            for (Carta carta : j2.getMao()) {
+                                System.out.println(fs + "- " + carta);
+                                fs++;
+                            }
+                            System.out.println("5- Nenhuma");
+                            System.out.println("Digite o indice da carta que deseja tocar:");
+                            int x = in.nextInt();
+                            if(x < 5) {
+                                j2.getMao().remove(x);
+                            } else {
+                                break;
+                            }
+                        }
+                        int l = 0;
+                        while(j2.getMao().size() < 5) {
+                            j2.addNaMao(baralho.get(l));
+                            baralho.remove(l);
+                        }
+
+                        System.out.println("Jogador 2 sua nova mão é: \n" + j2 + "\n");
 
                         r2 = false;
                     }
@@ -932,7 +993,7 @@ public class Main {
                         }
 
                     }
-
+                    isVencedor(j1,j2);
                     winCond = false;
                 }
                 if(j1.getFichas()!=0 && j2.getFichas()!=0){
